@@ -1,13 +1,31 @@
+import { FC } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+
 import styles from './Form.module.scss'
 
-export const Form = () => {
+import { IForm } from '../../models/IForm'
+import { IInputs } from '../../models/IInputs'
+
+export const Form: FC<IForm> = ({ setTodos, todos, toast }) => {
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors }
+	} = useForm<IInputs>({ mode: 'onChange' })
+
+	const onSubmit: SubmitHandler<IInputs> = data => {
+		setTodos([...todos, { text: data.todoText, isCheck: false }])
+		reset()
+		toast('Task created')
+	}
+
 	return (
 		<div className={styles.wrapper}>
-			<form action='#'>
-				<label>
-					<input type='text' />
-					<button></button>
-				</label>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<input type='text' {...register('todoText', { required: true })} />
+				{errors.todoText && <span>This field is required</span>}
+				<button></button>
 			</form>
 		</div>
 	)
