@@ -1,11 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
 
 import './assets/scss/style.scss'
-import { ToDoListPage } from './pages/ToDoListPage'
+import { router } from './router/router'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<ToDoListPage />
+		<RouterProvider router={router} />
 	</StrictMode>
 )
