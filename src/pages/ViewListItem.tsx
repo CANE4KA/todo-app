@@ -3,11 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { ITodo } from '../models/ITodo'
 
-interface IItemDescription {
+interface ViewListItem {
 	todos: ITodo[]
 }
 
-export const ItemDescription: FC<IItemDescription> = ({ todos }) => {
+export const ViewListItem: FC<ViewListItem> = ({ todos }) => {
 	const [todo, setTodo] = useState<ITodo>()
 	const { id } = useParams()
 	const navigate = useNavigate()

@@ -4,11 +4,11 @@ import { ListItem } from '../components/listItem/ListItem'
 
 import { ITodo } from '../models/ITodo'
 
-interface IHomePage {
+interface IViewList {
 	todos: ITodo[]
 }
 
-export const HomePage: FC<IHomePage> = ({ todos }) => {
+export const ViewList: FC<IViewList> = ({ todos }) => {
 	return (
 		<div className='container'>
 			{todos.map((todo, index) => (

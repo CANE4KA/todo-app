@@ -7,7 +7,7 @@ import { TodoList } from '../components/todoList/TodoList'
 
 import { ITodo } from '../models/ITodo'
 
-export const ToDoListPage = () => {
+export const ToDoList = () => {
 	const [todos, setTodos] = useState<ITodo[]>([])
 
 	const updateTodo = (id: number) => {
