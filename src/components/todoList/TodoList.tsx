@@ -1,10 +1,8 @@
-import cn from 'clsx'
 import { FC } from 'react'
-
-import styles from './TodoList.module.scss'
 
 import { ITodoList } from '../../models/ITodoList'
 
+import { ToDoList, TodoListContainer } from './TodoList.styles'
 import { TodoListItem } from './todoListItem/TodoListItem'
 
 export const TodoList: FC<ITodoList> = ({ todos, updateTodo, deleteTodo }) => {
@@ -23,9 +21,9 @@ export const TodoList: FC<ITodoList> = ({ todos, updateTodo, deleteTodo }) => {
 		)
 
 	return (
-		<div className={styles.container}>
-			<ul className={cn(styles.list, styles.failed)}>{todosMap(true)}</ul>
-			<ul className={cn(styles.list, styles.completed)}>{todosMap(false)}</ul>
-		</div>
+		<TodoListContainer>
+			<ToDoList className='failed'>{todosMap(true)}</ToDoList>
+			<ToDoList className='completed'>{todosMap(false)}</ToDoList>
+		</TodoListContainer>
 	)
 }

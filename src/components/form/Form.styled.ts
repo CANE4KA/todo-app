@@ -1,4 +1,6 @@
-.wrapper {
+import styled from 'styled-components'
+
+export const FormWrapper = styled.div`
 	width: 100%;
 	height: 80px;
 
@@ -10,9 +12,9 @@
 	box-shadow: 0 2px 4px rgba(44, 62, 80, 0.15);
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
-}
+`
 
-.wrapper form input {
+export const FormInput = styled.input`
 	width: 100%;
 	height: 50px;
 	color: #fff;
@@ -25,9 +27,9 @@
 	border: 0;
 	box-shadow: none;
 	outline: none;
-}
+`
 
-.wrapper form button {
+export const FormButton = styled.button`
 	width: 50px;
 	height: 50px;
 	background: transparent url(../../assets/images/plus.png) no-repeat
@@ -42,4 +44,4 @@
 	box-shadow: none;
 	outline: none;
 	cursor: pointer;
-}
+`

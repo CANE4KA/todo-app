@@ -1,9 +1,16 @@
-import cn from 'clsx'
 import { FC } from 'react'
 
-import styles from './TodoListItem.module.scss'
-
 import { ITodoItem } from '../../../models/ITodoItem'
+
+import check from '../../../assets/images/check.png'
+import trash from '../../../assets/images/trash.png'
+import unCheck from '../../../assets/images/uncheck.png'
+
+import {
+	TodoItemButton,
+	TodoListItemButtons,
+	TodoListItemWrapper
+} from './TodoListItem.styled'
 
 export const TodoListItem: FC<ITodoItem> = ({
 	todo,
@@ -12,21 +19,18 @@ export const TodoListItem: FC<ITodoItem> = ({
 	deleteTodo
 }) => {
 	return (
-		<li className={styles.wrapper}>
+		<TodoListItemWrapper>
 			<span>{todo.text}</span>
-			<div className={styles.buttons}>
-				<button
-					className={styles.trash}
+			<TodoListItemButtons>
+				<TodoItemButton
+					$icon={trash}
 					onClick={() => deleteTodo(id)}
-				></button>
-				<button
-					className={cn({
-						[styles.check]: todo.isCheck,
-						[styles.uncheck]: !todo.isCheck
-					})}
+				></TodoItemButton>
+				<TodoItemButton
+					$icon={todo.isCheck ? check : unCheck}
 					onClick={() => updateTodo(id)}
-				></button>
-			</div>
-		</li>
+				></TodoItemButton>
+			</TodoListItemButtons>
+		</TodoListItemWrapper>
 	)
 }

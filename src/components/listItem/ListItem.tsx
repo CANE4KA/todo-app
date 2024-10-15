@@ -1,10 +1,8 @@
-import cn from 'clsx'
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
-
-import styles from './ListItem.module.scss'
 
 import { ITodo } from '../../models/ITodo'
+
+import { ListItemLink } from './ListItem.styled'
 
 interface IListItem {
 	todo: ITodo
@@ -13,15 +11,8 @@ interface IListItem {
 
 export const ListItem: FC<IListItem> = ({ todo, id }) => {
 	return (
-		<Link
-			className={cn(styles.link, {
-				[styles.check]: todo.isCheck,
-				[styles.notCheck]: !todo.isCheck
-			})}
-			to={`/list/${id}`}
-			target='_blank'
-		>
+		<ListItemLink to={`/list/${id}`} target='_blank' $isCheck={todo.isCheck}>
 			{todo.text}
-		</Link>
+		</ListItemLink>
 	)
 }

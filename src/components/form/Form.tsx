@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import styles from './Form.module.scss'
-
 import { IForm } from '../../models/IForm'
 import { IInputs } from '../../models/IInputs'
+
+import { FormButton, FormInput, FormWrapper } from './Form.styled'
 
 export const Form: FC<IForm> = ({ createTodo }) => {
 	const {
@@ -20,12 +20,12 @@ export const Form: FC<IForm> = ({ createTodo }) => {
 	}
 
 	return (
-		<div className={styles.wrapper}>
+		<FormWrapper>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<input type='text' {...register('todoText', { required: true })} />
+				<FormInput type='text' {...register('todoText', { required: true })} />
 				{errors.todoText && <span>This field is required</span>}
-				<button></button>
+				<FormButton></FormButton>
 			</form>
-		</div>
+		</FormWrapper>
 	)
 }
