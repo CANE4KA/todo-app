@@ -6,7 +6,7 @@ import styles from './Form.module.scss'
 import { IForm } from '../../models/IForm'
 import { IInputs } from '../../models/IInputs'
 
-export const Form: FC<IForm> = ({ setTodos, todos, toast }) => {
+export const Form: FC<IForm> = ({ createTodo }) => {
 	const {
 		register,
 		handleSubmit,
@@ -15,9 +15,8 @@ export const Form: FC<IForm> = ({ setTodos, todos, toast }) => {
 	} = useForm<IInputs>({ mode: 'onChange' })
 
 	const onSubmit: SubmitHandler<IInputs> = data => {
-		setTodos([...todos, { text: data.todoText, isCheck: false }])
+		createTodo(data.todoText)
 		reset()
-		toast('Task created')
 	}
 
 	return (

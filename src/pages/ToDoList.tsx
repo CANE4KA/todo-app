@@ -1,37 +1,40 @@
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Slide, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { Form } from '../components/form/Form'
 import { TodoList } from '../components/todoList/TodoList'
 
-import { ITodo } from '../models/ITodo'
+import { createAction, deleteAction, updateAction } from '../feature/todoList'
+import { RootState } from '../store'
 
 export const ToDoList = () => {
-	const [todos, setTodos] = useState<ITodo[]>([])
+	const todoList = useSelector((state: RootState) => state.todoList.todos)
+	const dispatch = useDispatch()
+
+	const createTodo = (text: string) => {
+		dispatch(createAction(text))
+		toast('Task created')
+	}
 
 	const updateTodo = (id: number) => {
-		setTodos(
-			todos.map((todo, index) => {
-				if (index === id) {
-					todo.isCheck = !todo.isCheck
-				}
-
-				return todo
-			})
-		)
+		dispatch(updateAction(id))
 		toast('Task modified')
 	}
 
 	const deleteTodo = (id: number) => {
-		setTodos(todos.filter((_, index) => index !== id))
+		dispatch(deleteAction(id))
 		toast('Task deleted')
 	}
 
 	return (
 		<>
-			<Form setTodos={setTodos} todos={todos} toast={toast} />
-			<TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+			<Form createTodo={createTodo} />
+			<TodoList
+				todos={todoList}
+				updateTodo={updateTodo}
+				deleteTodo={deleteTodo}
+			/>
 			<ToastContainer
 				position='bottom-right'
 				autoClose={2000}

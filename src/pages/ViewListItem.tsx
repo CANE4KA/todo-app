@@ -1,25 +1,25 @@
-import { FC, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { ITodo } from '../models/ITodo'
 
-interface ViewListItem {
-	todos: ITodo[]
-}
+import { RootState } from '../store'
 
-export const ViewListItem: FC<ViewListItem> = ({ todos }) => {
+export const ViewListItem = () => {
+	const todoList = useSelector((state: RootState) => state.todoList.todos)
 	const [todo, setTodo] = useState<ITodo>()
 	const { id } = useParams()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		const todo = todos.find((_, index) => String(index) === id)
+		const todo = todoList.find((_, index) => String(index) === id)
 		if (!todo) {
 			navigate('/notFound')
 		}
 
 		setTodo(todo)
-	}, [todos, id, navigate])
+	}, [todoList, id, navigate])
 
 	return (
 		<div className='container'>

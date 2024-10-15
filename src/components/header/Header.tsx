@@ -13,15 +13,15 @@ export const Header = () => {
 						cn(styles.link, { [styles.active]: isActive })
 					}
 				>
-					Home
+					Todo
 				</NavLink>
 				<NavLink
-					to='/todo'
+					to='/list'
 					className={({ isActive }) =>
 						cn(styles.link, { [styles.active]: isActive })
 					}
 				>
-					Todo
+					List
 				</NavLink>
 			</div>
 		</header>

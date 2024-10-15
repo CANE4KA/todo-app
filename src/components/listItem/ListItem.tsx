@@ -19,6 +19,7 @@ export const ListItem: FC<IListItem> = ({ todo, id }) => {
 				[styles.notCheck]: !todo.isCheck
 			})}
 			to={`/list/${id}`}
+			target='_blank'
 		>
 			{todo.text}
 		</Link>

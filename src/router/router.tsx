@@ -5,28 +5,7 @@ import { ViewList } from '../pages/ViewList'
 import { ViewListItem } from '../pages/ViewListItem'
 import { NotFound } from '../pages/not-found/NotFound'
 
-import { ITodo } from '../models/ITodo'
-
 import { Layout } from '../layout/Layout'
-
-const todos: ITodo[] = [
-	{
-		text: 'First action',
-		isCheck: false
-	},
-	{
-		text: 'Second action',
-		isCheck: true
-	},
-	{
-		text: 'Third action',
-		isCheck: false
-	},
-	{
-		text: 'Fourth action',
-		isCheck: true
-	}
-]
 
 export const router = createBrowserRouter([
 	{
@@ -40,11 +19,11 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/list',
-				element: <ViewList todos={todos} />
+				element: <ViewList />
 			},
 			{
 				path: '/list/:id',
-				element: <ViewListItem todos={todos} />
+				element: <ViewListItem />
 			}
 		]
 	},
