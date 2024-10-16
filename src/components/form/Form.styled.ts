@@ -8,7 +8,7 @@ export const FormWrapper = styled.div`
 	padding: 15px;
 	z-index: 5;
 
-	background-color: #4682b4;
+	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 	box-shadow: 0 2px 4px rgba(44, 62, 80, 0.15);
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
@@ -29,11 +29,10 @@ export const FormInput = styled.input`
 	outline: none;
 `
 
-export const FormButton = styled.button`
+export const FormButton = styled.button<{ $icon: string }>`
 	width: 50px;
 	height: 50px;
-	background: transparent url(../../assets/images/plus.png) no-repeat
-		center/cover;
+	background: transparent url(${props => props.$icon}) no-repeat center/cover;
 	position: absolute;
 	top: 15px;
 	right: 15px;

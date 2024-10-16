@@ -4,6 +4,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { IForm } from '../../models/IForm'
 import { IInputs } from '../../models/IInputs'
 
+import plus from '../../assets/images/plus.png'
+
 import { FormButton, FormInput, FormWrapper } from './Form.styled'
 
 export const Form: FC<IForm> = ({ createTodo }) => {
@@ -24,7 +26,7 @@ export const Form: FC<IForm> = ({ createTodo }) => {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<FormInput type='text' {...register('todoText', { required: true })} />
 				{errors.todoText && <span>This field is required</span>}
-				<FormButton></FormButton>
+				<FormButton $icon={plus}></FormButton>
 			</form>
 		</FormWrapper>
 	)

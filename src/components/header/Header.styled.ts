@@ -7,12 +7,13 @@ export const HeaderBlock = styled.header`
 	right: 0;
 	left: 0;
 	height: 50px;
-	background-color: #4682b4;
+	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 	display: flex;
 	align-items: center;
 `
 
 export const HeaderContainer = styled.div`
+	position: relative;
 	max-width: 97%;
 	width: 100%;
 	margin: 0 auto;
@@ -31,4 +32,15 @@ export const HeaderLink = styled(NavLink)`
 	&.active {
 		color: #ffffff33;
 	}
+`
+
+export const HeaderButton = styled.button`
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: transparent;
+	border: none;
+	font-size: 25px;
+	color: ${({ theme }) =>
+		theme.name === 'light' ? '#fff' : theme.colors.backgroundSecondary};
 `
