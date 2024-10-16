@@ -13,7 +13,7 @@ export const ViewListItem = () => {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		const todo = todoList.find((_, index) => String(index) === id)
+		const todo = todoList.find(todo => todo.id === id)
 		if (!todo) {
 			navigate('/notFound')
 		}

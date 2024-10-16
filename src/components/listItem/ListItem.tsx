@@ -6,7 +6,7 @@ import { ListItemLink } from './ListItem.styled'
 
 interface IListItem {
 	todo: ITodo
-	id: number
+	id: string
 }
 
 export const ListItem: FC<IListItem> = ({ todo, id }) => {
