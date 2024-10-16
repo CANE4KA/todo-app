@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { v4 as uuid } from 'uuid'
 
 import { ITodo } from '../models/ITodo'
 
@@ -16,18 +17,21 @@ export const todoSlice = createSlice({
 	initialState,
 	reducers: {
 		createAction: (state, action: PayloadAction<string>) => {
-			state.todos = [...state.todos, { text: action.payload, isCheck: false }]
+			state.todos = [
+				...state.todos,
+				{ id: uuid(), text: action.payload, isCheck: false }
+			]
 		},
-		updateAction: (state, action: PayloadAction<number>) => {
-			state.todos = state.todos.map((todo, index) => {
-				if (index === action.payload) {
+		updateAction: (state, action: PayloadAction<string>) => {
+			state.todos = state.todos.map(todo => {
+				if (todo.id === action.payload) {
 					todo.isCheck = !todo.isCheck
 				}
 				return todo
 			})
 		},
-		deleteAction: (state, action: PayloadAction<number>) => {
-			state.todos = state.todos.filter((_, index) => index !== action.payload)
+		deleteAction: (state, action: PayloadAction<string>) => {
+			state.todos = state.todos.filter(todo => todo.id !== action.payload)
 		}
 	}
 })

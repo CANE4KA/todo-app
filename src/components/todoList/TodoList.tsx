@@ -8,12 +8,12 @@ import { TodoListItem } from './todoListItem/TodoListItem'
 export const TodoList: FC<ITodoList> = ({ todos, updateTodo, deleteTodo }) => {
 	const todosMap = (isCheck: boolean) =>
 		todos.map(
-			(todo, index) =>
+			todo =>
 				(isCheck ? !todo.isCheck : todo.isCheck) && (
 					<TodoListItem
-						key={index}
+						key={todo.id}
 						todo={todo}
-						id={index}
+						id={todo.id}
 						deleteTodo={deleteTodo}
 						updateTodo={updateTodo}
 					/>

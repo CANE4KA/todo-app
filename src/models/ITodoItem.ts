@@ -2,7 +2,7 @@ import { ITodo } from './ITodo'
 
 export interface ITodoItem {
 	todo: ITodo
-	id: number
+	id: string
 	updateTodo: Function
 	deleteTodo: Function
 }

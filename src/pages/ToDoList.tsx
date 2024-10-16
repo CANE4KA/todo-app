@@ -17,12 +17,12 @@ export const ToDoList = () => {
 		toast('Task created')
 	}
 
-	const updateTodo = (id: number) => {
+	const updateTodo = (id: string) => {
 		dispatch(updateAction(id))
 		toast('Task modified')
 	}
 
-	const deleteTodo = (id: number) => {
+	const deleteTodo = (id: string) => {
 		dispatch(deleteAction(id))
 		toast('Task deleted')
 	}
